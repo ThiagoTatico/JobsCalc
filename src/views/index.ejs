@@ -79,20 +79,20 @@
           
           <% jobs.forEach((job => { %>
             <!-- start card -->
-            <div class="card progress" data-id="<%= job.id %>">
+            <div class="card <%= job.status %> " data-id="<%= job.id %>">
               <div class="id column"><%= job.id %></div>
               <div class="name column">
                 <%= job.name %>
               </div>
               <div class="deadline column">
                 <span>Prazo</span>
-                <p>3 dias para a entrega</p>
+                <p> <%= job.remaining %>  dias para a entrega</p>
               </div>
               <div class="amount column">
                 <span>Valor</span>
-                <p>R$ 4500,00</p>
+                <p>R$ <%= job.budget.toFixed(2).replace('.', ',') %> </p>
               </div>
-              <div class="status badge column">Em andamento</div>
+              <div class="status badge column"> <%= job.status === 'done' ? 'Encerrado' : 'Em andamento' %> </div>
               <div class="actions column flex">
                 <p class="sr-only">Ações</p>
                 <a
