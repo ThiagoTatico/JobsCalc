@@ -7,6 +7,9 @@ server.set('view engine', 'ejs')
 // Enable static files
 server.use(express.static('public')) // 'Use' is for add functionalities in the server
 
+// Ability req.body
+server.use(express.urlencoded({extended: true}))
+
 // Routes
 server.use(routes)
 
