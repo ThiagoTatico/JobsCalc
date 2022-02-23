@@ -95,7 +95,11 @@ const Job = {
     show(req, res) {
       const jobId = req.params.id
 
-      const job = Job.data.find(job => job.id === jobId)
+      const job = Job.data.find(job => Number(job.id) === Number(jobId))
+
+      if (!job) {
+        return res.send('Job not found')
+      }
 
       return res.render(views + 'job-edit', { job })
     }
