@@ -90,6 +90,14 @@ const Job = {
       })
 
       return res.redirect('/')
+    },
+
+    show(req, res) {
+      const jobId = req.params.id
+
+      const job = Job.data.find(job => job.id === jobId)
+
+      return res.render(views + 'job-edit', { job })
     }
   },
 
@@ -116,7 +124,7 @@ const Job = {
 routes.get('/', Job.controllers.index)
 routes.get('/job', Job.controllers.create)
 routes.post('/job', Job.controllers.save)
-routes.get('/job/edit', (req, res) => res.render(views + 'job-edit'))
+routes.get('/job/:id', Job.controllers.show)
 routes.get('/profile', Profile.controllers.index)
 routes.post('/profile', Profile.controllers.update)
 
