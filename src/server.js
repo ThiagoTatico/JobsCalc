@@ -1,8 +1,13 @@
 const express = require('express')
 const server = express()
 const routes = require('./routes')
+const path = require('path')
 
+// Template engine
 server.set('view engine', 'ejs')
+
+// Change views folder location
+server.set('views', path.join(__dirname, 'views'))
 
 // Enable static files
 server.use(express.static('public')) // 'Use' is for add functionalities in the server
