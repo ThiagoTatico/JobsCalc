@@ -7,6 +7,7 @@ module.exports = {
     const jobs = Job.get()
     const profile = Profile.get()
 
+    //status amounts
     let statusCount = {
       progress: 0,
       done: 0,
@@ -21,11 +22,11 @@ module.exports = {
       const remaining = JobUtils.remainingDays(job)
       const status = remaining <= 0 ? 'done' : 'progress'
 
+      // Sum status amount
       statusCount[status] += 1;
 
-      if (status == 'progress') {
-        jobTotalHours += 1
-      }
+      // Total hours for each job in progress
+      jobTotalHours = status == 'progress' ? jobTotalHours + Number( job['daily-hours'] ) : jobTotalHours
 
       return {
         ...job,
