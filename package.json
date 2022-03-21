@@ -4,7 +4,8 @@
   "description": "Freelance Calculator",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "init_db": "node src/db/init.js"
   },
   "keywords": [],
   "author": "",
