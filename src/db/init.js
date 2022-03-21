@@ -21,4 +21,22 @@ Database.exec(`CREATE TABLE jobs (
   created_at DATETIME
 )`)
 
+Database.run(`INSERT INTO profile (
+  name,
+  avatar,
+  monthly_budget,
+  days_per_week,
+  hours_per_day,
+  vacation_per_year,
+  value_hour
+) VALUES (
+  "Thiago Tatico",
+  "https://avatars.githubusercontent.com/u/86478479?v=4/",
+  3000,
+  5,
+  5,
+  4,
+  75
+)`)
+
 Database.close()
