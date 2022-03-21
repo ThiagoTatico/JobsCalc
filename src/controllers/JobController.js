@@ -7,9 +7,9 @@ module.exports = {
     return res.render('job');
   },
 
-  save(req, res) {
+  async save(req, res) {
     // req.body = { name: 'Thiago', dailyHours: '5', totalHours: '7'}
-    const jobs = Job.get();
+    const jobs = await Job.get();
 
     const lastId = jobs[jobs.length - 1]?.id || 0
   
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   async show(req, res) { // Use async/await for the "Profile.get()"
-    const jobs = Job.get();
+    const jobs = await Job.get();
     const profile = await Profile.get();
 
     const jobId = req.params.id
@@ -41,8 +41,8 @@ module.exports = {
     return res.render('job-edit', { job })
   },
 
-  update(req, res) {
-    const jobs = Job.get();
+  async update(req, res) {
+    const jobs = await Job.get();
 
     const jobId = req.params.id
 

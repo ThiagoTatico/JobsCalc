@@ -4,7 +4,7 @@ const Profile = require('../model/Profile')
 
 module.exports = {
   async index(req, res) { // Use async/await for the "Profile.get()"
-    const jobs = Job.get()
+    const jobs = await Job.get()
     const profile = await Profile.get()
 
     //status amounts
