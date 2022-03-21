@@ -13,7 +13,7 @@ module.exports = {
 
     const lastId = jobs[jobs.length - 1]?.id || 0
   
-    jobs.push({
+    Job.create({
       id: lastId + 1,
       name: req.body.name,
       "daily-hours": req.body["daily-hours"],
