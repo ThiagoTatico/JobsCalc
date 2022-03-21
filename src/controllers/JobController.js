@@ -24,9 +24,9 @@ module.exports = {
     return res.redirect('/');
   },
 
-  show(req, res) {
+  async show(req, res) { // Use async/await for the "Profile.get()"
     const jobs = Job.get();
-    const profile = Profile.get();
+    const profile = await Profile.get();
 
     const jobId = req.params.id
 
