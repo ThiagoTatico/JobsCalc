@@ -17,6 +17,24 @@ module.exports = {
     }));
   },
 
+  async create(newJob) {
+    const db = await Database()
+
+    await db.run(`INSERT INTO jobs (
+      name,
+      daily_hours,
+      total_hours,
+      created_at
+    ) VALUES (
+      "${newJob.name}",
+      ${newJob["daily-hours"]},
+      ${newJob["total-hours"]},
+      ${newJob.created_at}
+    )`)
+
+    await db.close()
+  },
+
   async update(updatedJob, jobId) {
     const db = await Database()
 
@@ -37,22 +55,5 @@ module.exports = {
 
     await db.close()
   },
-
-  async create(newJob) {
-    const db = await Database()
-
-    await db.run(`INSERT INTO jobs (
-      name,
-      daily_hours,
-      total_hours,
-      created_at
-    ) VALUES (
-      "${newJob.name}",
-      ${newJob["daily-hours"]},
-      ${newJob["total-hours"]},
-      ${newJob.created_at}
-    )`)
-
-    await db.close()
-  },
+  
 };
